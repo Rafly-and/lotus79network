@@ -23,7 +23,7 @@ semuaTombolHubungi.forEach(function(tombol) {
         // Mencegah link melakukan aksi scroll atau memuat ulang halaman
         event.preventDefault(); 
         // Membuka link WhatsApp di tab baru
-        window.open("https://wa.me/6281998338585", "_blank");
+        window.open("https://wa.me/6285211668225", "_blank");
     });
 });
 

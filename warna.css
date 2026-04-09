@@ -1,0 +1,452 @@
+/* CSS Reset & Variables */
+:root {
+	--primary-blue: #0056b3;
+	--secondary-blue: #007bff;
+	--light-blue: #e9f5ff;
+	--white: #ffffff;
+	--dark-text: #333333;
+	--gray-text: #666666;
+	--light-gray: #f4f7f6;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+	color: var(--dark-text);
+	line-height: 1.6;
+	background-color: var(--light-gray);
+}
+
+/* Navbar */
+header {
+    background-color: transparent; /* Awalnya transparan */
+    padding: 20px 50px;
+    position: fixed; /* Berubah menjadi fixed agar menimpa section hero di bawahnya */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Animasi transisi transparan ke putih */
+}
+
+/* Class tambahan yang akan dipicu oleh JavaScript saat layar di-scroll */
+header.scrolled {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-scrolled {
+	font-size: 24px;
+	font-weight: bold;
+	color: var(--primary-blue);
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-scrolled span {
+	color: var(--secondary-blue);
+}
+
+
+/* Hero Section */
+.hero {
+    height: 100vh; /* Mengisi penuh tinggi layar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    
+    /* Background Image dengan efek Parallax dan Overlay Warna Biru agar teks tetap terbaca */
+    background-image: linear-gradient(rgba(0, 86, 179, 0.4), rgba(0, 123, 255, 0.5)), url('gbr/img-bg.jpg');
+    background-attachment: fixed; /* Kunci utama dari efek Parallax kedalaman */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--white);
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.btn {
+	background-color: var(--white);
+	color: var(--primary-blue);
+	padding: 15px 30px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 5px;
+	font-size: 16px;
+	transition: 0.3s;
+	display: inline-block;
+}
+
+.btn:hover {
+	background-color: var(--light-blue);
+	transform: translateY(-2px);
+}
+
+/* Trust Section */
+.trust-section {
+	padding: 60px 20px;
+	text-align: center;
+	background-color: var(--white);
+}
+
+.trust-section h2 {
+	color: var(--primary-blue);
+	margin-bottom: 40px;
+	font-size: 32px;
+}
+
+.features-grid {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	flex-wrap: wrap;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.feature-card {
+	background-color: var(--light-blue);
+	padding: 30px;
+	border-radius: 8px;
+	width: 300px;
+}
+
+.feature-card h3 {
+	color: var(--primary-blue);
+	margin-bottom: 15px;
+}
+
+/* Pricing Section */
+.pricing-section-a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+    
+    /* Background Image dengan efek Parallax dan Overlay Warna Biru agar teks tetap terbaca */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/indoor-ap.jpg');
+    background-attachment: fixed; /* Kunci utama dari efek Parallax kedalaman */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--white);
+}
+
+.pricing-section-b {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+    
+    /* Background Image dengan efek Parallax dan Overlay Warna Biru agar teks tetap terbaca */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/outdoor-ap.jpg');
+    background-attachment: fixed; /* Kunci utama dari efek Parallax kedalaman */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--white);
+}
+
+.section-title-price {
+	text-align: center;
+	color: var(--white);
+	margin-bottom: 50px;
+	font-size: 36px;
+}
+
+.section-title {
+	text-align: center;
+	color: var(--primary-blue);
+	margin-bottom: 50px;
+	font-size: 36px;
+}
+
+.pricing-grid {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	flex-wrap: wrap;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.pricing-card {
+	background-color: var(--white);
+	border-radius: 10px;
+	padding: 40px;
+	width: 350px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+	border-top: 5px solid var(--secondary-blue);
+	transition: 0.3s;
+	color: #0056b3;
+	text-align: left;
+}
+
+.pricing-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.pricing-card h3 {
+	font-size: 24px;
+	color: var(--primary-blue);
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.pricing-card .subtitle {
+	text-align: center;
+	color: var(--gray-text);
+	font-size: 14px;
+	margin-bottom: 30px;
+	display: block;
+}
+
+.pricing-card ul {
+	list-style: none;
+}
+
+.pricing-card ul li {
+	margin-bottom: 15px;
+	padding-left: 25px;
+	position: relative;
+	font-size: 15px;
+}
+
+.pricing-card ul li::before {
+	content: '✓';
+	color: var(--secondary-blue);
+	position: absolute;
+	left: 0;
+	font-weight: bold;
+}
+
+/* Additional Packages */
+.additional-section {
+	padding: 60px 20px;
+	background-color: var(--white);
+}
+
+.add-grid {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.add-card {
+	background-color: var(--light-blue);
+	padding: 25px;
+	border-radius: 8px;
+	width: calc(33.333% - 20px);
+	min-width: 300px;
+	border-left: 4px solid var(--primary-blue);
+}
+
+.add-card h4 {
+	color: var(--primary-blue);
+	margin-bottom: 15px;
+	font-size: 18px;
+}
+
+.add-card ul {
+	list-style-type: disc;
+	padding-left: 20px;
+	font-size: 14px;
+}
+
+.add-card ul li {
+	margin-bottom: 8px;
+}
+
+.cta {
+	justify-content: center;
+	padding: 5%;
+}
+
+.btn-cta {
+	text-align: center;
+	background-color: var(--white);
+	color: var(--primary-blue);
+	padding: 15px 30px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 5px;
+	font-size: 16px;
+	transition: 0.3s;
+	display: grid;
+	margin: 0 20% 0 20%;
+}
+
+/* Footer */
+footer {
+	background-color: var(--primary-blue);
+	color: var(--white);
+	text-align: center;
+	padding: 30px 20px;
+}
+
+
+/* --- Styling Tambahan Global --- */
+.section-subtitle {
+    text-align: center;
+    color: var(--gray-text);
+    margin-top: -30px;
+    margin-bottom: 40px;
+    font-size: 16px;
+    padding: 0 20px;
+}
+
+/* --- Section Design Showcase (Carousel) --- */
+.design-showcase {
+    padding: 80px 20px;
+    background-color: var(--white);
+}
+
+/* Container pembungkus keseluruhan beserta tombol */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Ukuran maksimal lebar desain desktop */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Memberi jarak antara tombol dan area gambar */
+}
+
+/* Memastikan Swiper tidak keluar jalur */
+.swiper {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* --- DESAIN GAMBAR --- */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block; /* Mencegah bug spasi kosong di bawah gambar */
+}
+
+/* Carousel Atas: Rasio 16:9 untuk Desktop UI */
+#mainCarousel .swiper-slide img {
+    aspect-ratio: 16 / 9; 
+}
+
+/* Carousel Bawah: Kita tidak perlu mengatur lebar kotak lagi, Swiper yang akan mengaturnya di JavaScript */
+
+/* --- PERBAIKAN TOMBOL (KOTAK 1:1) --- */
+.carousel-btn {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 40px;          
+    height: 40px;         
+    display: flex;        
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;   
+    z-index: 10;
+    flex-shrink: 0; /* Mencegah tombol mengecil atau gepeng tertekan oleh gambar */
+}
+
+/* Efek saat tombol dihover (opsional) */
+.carousel-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+
+
+
+/* --- Section Portfolio (Grid Instagram) --- */
+.portfolio-gallery {
+    padding: 80px 20px;
+    background-color: var(--light-gray);
+}
+
+.grid-container {
+    display: grid;
+    /* Ini adalah kunci Grid masa depan: Otomatis menyesuaikan jumlah kolom berdasarkan lebar layar */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; /* Jarak antar foto */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-item {
+    aspect-ratio: 1 / 1; /* Memaksa foto berbentuk kotak sempurna (1:1) ala Instagram */
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.1); /* Efek zoom in pelan saat mouse diarahkan ke foto */
+}
+
+.icon-arrow-container {
+	display: flex;
+    justify-content: center; /* Mengetengahkan secara horizontal */
+    align-items: center;     /* Mengetengahkan secara vertikal */
+    width: 100%;             /* Memenuhi lebar halaman */
+}
+
+.large-icon {
+    /* Menggunakan pixel (px) atau rem */
+    font-size: 5vh; /* Sekitar 48px */
+    color: var(--primary-blue);  
+}
+
+@media (max-width: 768px) {
+	.hero h1 { font-size: 32px; }
+	.pricing-card { width: 100%; }
+	.add-card { width: 100%; }
+	header { flex-direction: column; text-align: center; gap: 10px; }
+	.carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+    .carousel-slide { height: 400px; }
+}

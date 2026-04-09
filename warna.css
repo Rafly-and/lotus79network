@@ -37,6 +37,10 @@ header {
     transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Animasi transisi transparan ke putih */
 }
 
+.tx-bold {
+	font-weight: bold;
+}
+
 /* Class tambahan yang akan dipicu oleh JavaScript saat layar di-scroll */
 header.scrolled {
     background-color: var(--white);
@@ -72,8 +76,8 @@ header.scrolled {
     text-align: center;
     padding: 0 20px;
     
-    /* Background Image dengan efek Parallax dan Overlay Warna Biru agar teks tetap terbaca */
-    background-image: linear-gradient(rgba(0, 86, 179, 0.4), rgba(0, 123, 255, 0.5)), url('gbr/img-bg.jpg');
+    /* Background Image dengan efek Parallax dan Overlay Warna Hitam agar teks tetap terbaca */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/img-bg.jpg');
     background-attachment: fixed; /* Kunci utama dari efek Parallax kedalaman */
     background-position: center;
     background-repeat: no-repeat;
@@ -155,7 +159,7 @@ header.scrolled {
     padding: 80px 20px;
     
     /* Background Image dengan efek Parallax dan Overlay Warna Biru agar teks tetap terbaca */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/indoor-ap.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/bg/indoor-ap-d.jpg');
     background-attachment: fixed; /* Kunci utama dari efek Parallax kedalaman */
     background-position: center;
     background-repeat: no-repeat;
@@ -172,7 +176,7 @@ header.scrolled {
     padding: 80px 20px;
     
     /* Background Image dengan efek Parallax dan Overlay Warna Biru agar teks tetap terbaca */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/outdoor-ap.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/bg/outdoor-ap-d.jpg');
     background-attachment: fixed; /* Kunci utama dari efek Parallax kedalaman */
     background-position: center;
     background-repeat: no-repeat;
@@ -203,55 +207,135 @@ header.scrolled {
 	margin: 0 auto;
 }
 
+/* --- TAMPILAN PRICING CARD BARU --- */
 .pricing-card {
-	background-color: var(--white);
-	border-radius: 10px;
-	padding: 40px;
-	width: 350px;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-	border-top: 5px solid var(--secondary-blue);
-	transition: 0.3s;
-	color: #0056b3;
-	text-align: left;
+    background-color: var(--white);
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border: 2px solid #a3c2c2; /* Garis tepi abu-abu/hijau pucat */
+    transition: 0.3s;
+    text-align: left;
+    overflow: hidden; /* Penting: agar sudut header melengkung mengikuti radius card */
+    display: flex;
+    flex-direction: column;
 }
 
 .pricing-card:hover {
-	transform: translateY(-10px);
-	box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Varian Khusus Paket Bisnis (Biru Cyan) */
+.pricing-card.bisnis {
+    border: 2px solid #00bcd4;
+}
+.pricing-card.bisnis .card-header {
+    background-color: #e0f7fa; /* Warna latar biru muda di header */
+}
+
+/* --- Area Header Card (Judul, Harga, Gambar) --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 2px solid #a3c2c2;
+    background-color: #f1f4f5; /* Warna latar abu terang */
+}
+.pricing-card.bisnis .card-header {
+    border-bottom: 2px solid #00bcd4;
+}
+
+.title-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .pricing-card h3 {
-	font-size: 24px;
-	color: var(--primary-blue);
-	margin-bottom: 10px;
-	text-align: center;
+    font-size: 26px;
+    color: #000;
+    margin-bottom: 2px;
+    font-weight: 800;
 }
 
-.pricing-card .subtitle {
-	text-align: center;
-	color: var(--gray-text);
-	font-size: 14px;
-	margin-bottom: 30px;
-	display: block;
+.subtitle-user {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* --- Harga Hidden --- */
+.price-box {
+    display: none;
+}
+
+.purpose-box { 
+	color: black;
+	font-size: 10px; 
+	margin-right: 2px; 
+}
+
+/*--
+.price-box {
+    display: flex;
+    align-items: baseline;
+    color: #000;
+    font-weight: 900;
+}
+.price-box .currency { font-size: 16px; margin-right: 2px; font-weight: bold;}
+.price-box .amount { font-size: 38px; line-height: 1; letter-spacing: -1px;}
+.price-box .decimals { font-size: 16px; font-weight: bold;}
+--*/
+
+/* --- Area Penempatan Gambar Bertumpuk --- */
+.image-area {
+    position: relative;
+    width: 140px;
+    height: 120px;
+}
+.img-ap {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 90px;
+    z-index: 1;
+}
+.img-router {
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    width: 110px;
+    z-index: 2; /* Menempatkan router di depan AP */
+}
+
+/* --- Area Body Card (Daftar Fitur) --- */
+.card-body {
+    padding: 20px;
+    background-color: var(--white);
 }
 
 .pricing-card ul {
-	list-style: none;
+    list-style: none;
 }
 
 .pricing-card ul li {
-	margin-bottom: 15px;
-	padding-left: 25px;
-	position: relative;
-	font-size: 15px;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
 }
 
 .pricing-card ul li::before {
-	content: '✓';
-	color: var(--secondary-blue);
-	position: absolute;
-	left: 0;
-	font-weight: bold;
+    content: '✓';
+    color: #28a745; /* Centang warna hijau pekat */
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 /* Additional Packages */
@@ -342,11 +426,37 @@ footer {
 .carousel-wrapper {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Ukuran maksimal lebar desain desktop */
+    max-width: 800px; 
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 10px; /* Memberi jarak antara tombol dan area gambar */
+}
+
+/* Ubah posisi tombol agar melayang di atas gambar */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 40px;          
+    height: 40px;         
+    display: flex;        
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;   
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+/* Taruh tombol prev di kiri, next di kanan */
+.carousel-btn.prev {
+    left: 10px;
+}
+.carousel-btn.next {
+    right: 10px;
 }
 
 /* Memastikan Swiper tidak keluar jalur */
@@ -367,24 +477,6 @@ footer {
 /* Carousel Atas: Rasio 16:9 untuk Desktop UI */
 #mainCarousel .swiper-slide img {
     aspect-ratio: 16 / 9; 
-}
-
-/* Carousel Bawah: Kita tidak perlu mengatur lebar kotak lagi, Swiper yang akan mengaturnya di JavaScript */
-
-/* --- PERBAIKAN TOMBOL (KOTAK 1:1) --- */
-.carousel-btn {
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    width: 40px;          
-    height: 40px;         
-    display: flex;        
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 8px;   
-    z-index: 10;
-    flex-shrink: 0; /* Mencegah tombol mengecil atau gepeng tertekan oleh gambar */
 }
 
 /* Efek saat tombol dihover (opsional) */
@@ -441,12 +533,156 @@ footer {
     color: var(--primary-blue);  
 }
 
-@media (max-width: 768px) {
-	.hero h1 { font-size: 32px; }
-	.pricing-card { width: 100%; }
-	.add-card { width: 100%; }
-	header { flex-direction: column; text-align: center; gap: 10px; }
-	.carousel-btn.prev { left: 10px; }
-    .carousel-btn.next { right: 10px; }
-    .carousel-slide { height: 400px; }
+/* --- Modal Lightbox --- */
+.lightbox-modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999; /* Diubah menjadi 9999 agar berada di depan header */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    justify-content: center;
+    align-items: center;
 }
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease; /* Animasi muncul yang halus */
+}
+
+/* Animasi Zoom saat gambar dibuka */
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10000; /* Opsional: Tambahkan ini jika tombol X sulit diklik */
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+/* Styling Khusus untuk Icon di Feature Card */
+.feature-icon {
+    font-size: 45px; /* Ukuran icon agar terlihat jelas */
+    color: var(--primary-blue); /* Menyamakan warna biru dengan tema logo/tombol */
+    margin-bottom: 15px; /* Jarak antara icon dan judul */
+    display: inline-block;
+}
+
+/* --- RESPONSIVE TABLET (Maksimal 1024px) --- */
+@media (max-width: 1024px) {
+    .pricing-card {
+        width: calc(50% - 30px); /* Membagi menjadi 2 kolom */
+    }
+    .feature-card {
+        width: calc(50% - 30px); /* Membagi fitur menjadi 2 kolom */
+    }
+    .add-card {
+        width: calc(50% - 20px);
+    }
+    header {
+        padding: 20px 30px; /* Kurangi jarak kiri-kanan header */
+    }
+}
+
+/* --- RESPONSIVE MOBILE (Maksimal 768px) --- */
+@media (max-width: 768px) {
+    /* 1. Optimasi Header Kiri-Kanan */
+    header { 
+        flex-direction: row; /* Mengubah susunan menjadi menyamping */
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 15px 20px; 
+    }
+    
+    .logo, .logo-scrolled {
+        font-size: 16px; /* Mengecilkan logo */
+    }
+    
+    header .btn.kontak-wa {
+        padding: 8px 12px !important; /* Mengecilkan ukuran tombol di header */
+        font-size: 12px !important;
+    }
+
+    /* Ukuran Font Hero */
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 15px; }
+
+    /* 2. Menyesuaikan Padding Card & Spasi Teks agar terbaca */
+    .feature-card, .add-card { 
+        width: 100%; 
+        padding: 25px 20px; 
+    }
+    
+    .pricing-card {
+        width: 100%;
+        padding: 0; /* Padding di-nol-kan karena sudah di-handle oleh card-header dan card-body */
+    }
+    
+    .feature-card p, .pricing-card ul li {
+        line-height: 1.6; /* Memberi jarak antar baris teks */
+        margin-bottom: 12px; /* Memberi jarak antar poin/paragraf */
+        font-size: 14px;
+    }
+
+    /* 3. Mengecilkan Judul Section (Trust Section & Pricing) */
+    .section-title { 
+        font-size: 24px; 
+        margin-bottom: 30px;
+    }
+	
+	.section-title-price {
+		font-size: 32px; 
+        margin-bottom: 30px;
+	}
+    
+    .trust-section h2 {
+        font-size: 24px; 
+        margin-bottom: 25px;
+    }
+
+    /* 4. Mengecilkan Judul pada Section CTA */
+    .cta h2 {
+        font-size: 24px !important; /* !important untuk menimpa style inline di file HTML */
+        margin-top: 20px !important;
+    }
+
+    /* Background Khusus Mobile */
+    .pricing-section-a { background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/bg/indoor-ap-m.jpg'); }
+    .pricing-section-b { background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('gbr/bg/outdoor-ap-m.jpg'); }
+
+    /* Optimasi Jarak Luar Section */
+    .pricing-section-a, .pricing-section-b, .trust-section, .design-showcase, .portfolio-gallery, .additional-section {
+        padding: 50px 15px;
+    }
+
+    #mainCarousel .swiper-slide img { aspect-ratio: 4 / 3; }
+    
+    .grid-container { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+    }
+	
+	footer p {
+		font-size: 12px;
+	}
+}
+

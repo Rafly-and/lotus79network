@@ -85,3 +85,47 @@ modal.addEventListener("click", function(e) {
         modal.style.display = "none";
     }
 });
+
+// --- SCRIPT DYNAMIC PORTFOLIO & LOAD MORE ---
+
+// 1. Daftar nama file gambar portofolio
+// Jika ada gambar baru, cukup tambahkan nama filenya di array ini.
+const portoImages = [
+    "porto-1.webp", "porto-2.webp", "porto-3.webp",
+    "porto-4.webp", "porto-5.webp", "porto-6.webp",
+    "porto-7.webp", "porto-8.webp", "porto-9.webp",
+    "porto-10.webp", "porto-11.webp", "porto-12.webp"
+];
+
+const portfolioGrid = document.getElementById("portfolioGrid");
+
+// 2. Looping array untuk membuat elemen HTML secara otomatis
+portoImages.forEach(filename => {
+    const gridItem = document.createElement("div");
+    gridItem.className = "grid-item";
+
+    const img = document.createElement("img");
+    img.src = `gbr/porto/${filename}`;
+    
+    // Set alt text otomatis dari nama file (menghapus ekstensi .webp dan tanda strip/dash jika mau)
+    // Contoh: "porto-1.webp" menjadi "porto-1"
+    img.alt = filename.replace(".webp", ""); 
+    img.loading = "lazy";
+
+    gridItem.appendChild(img);
+    portfolioGrid.appendChild(gridItem);
+});
+
+// 3. Logika Tombol Selengkapnya
+const btnSelengkapnya = document.getElementById("btnSelengkapnya");
+const galleryWrapper = document.getElementById("galleryWrapper");
+const galleryOverlay = document.getElementById("galleryOverlay");
+
+if (btnSelengkapnya && galleryWrapper && galleryOverlay) {
+    btnSelengkapnya.addEventListener("click", () => {
+        // Hapus batas tinggi
+        galleryWrapper.classList.add("expanded");
+        // Hilangkan efek blur dan tombol
+        galleryOverlay.style.display = "none"; 
+    });
+}
